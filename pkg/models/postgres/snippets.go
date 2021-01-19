@@ -3,7 +3,7 @@ package postgres
 import (
 	"context"
 	"github.com/jackc/pgx/v4/pgxpool"
-	"snippet07.com/pkg/models"
+	"snippetbox/pkg/models"
 	"strconv"
 	"time"
 )
@@ -59,6 +59,7 @@ func (m *SnippetModel) Latest() ([]*models.Snippet, error) {
 		}
 		snippets = append(snippets, s)
 	}
+	defer rows.Close()
 	if err = rows.Err(); err != nil {
 		return nil, err
 	}
