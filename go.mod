@@ -1,3 +1,3 @@
-module se07
+module snippetbox
 
 go 1.15
